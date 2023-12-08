@@ -1,3 +1,27 @@
+Quick Start
+
+```shell
+go get github.com/hyphennn/glamda@latest
+```
+
+```go
+package main
+
+import (
+	"fmt"
+
+	"github.com/hyphennn/glamda/lslice"
+)
+
+func main() {
+	s := []int{1, 1, 4, 5, 1, 4}
+	ss := lslice.Map(s, func(f int) int {
+		return f + 1
+	})
+	fmt.Println(ss) //[2 2 5 6 2 5]
+}
+```
+
 Dedicated to providing a go lamda expression library that does not introduce any additional dependencies and only incurs minimal additional performance costs
 
 
