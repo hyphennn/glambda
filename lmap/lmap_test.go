@@ -19,3 +19,10 @@ func TestMap(t *testing.T) {
 			return strconv.Itoa(k1), strconv.Itoa(v1)
 		}))
 }
+
+func TestUnion(t *testing.T) {
+	assert.Equal(t,
+		map[string]string{"1": "1", "4": "4", "5": "5"},
+		lmap.Union(map[string]string{"1": "1", "4": "4"}, map[string]string{"4": "4", "5": "5"}),
+	)
+}

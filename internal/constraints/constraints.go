@@ -1,3 +1,6 @@
+// @hyphennn: this is a copy of golang.org/x/exp/constraints. We use
+// this to avoid import any non-standard library
+
 // Copyright 2021 The Go Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
@@ -52,4 +55,9 @@ type Ordered interface {
 // Number is a constraint that permits any numeric type.
 type Number interface {
 	Integer | Float
+}
+
+// Addable is a constraint that support operator +
+type Addable interface {
+	Number | Complex | ~string
 }
