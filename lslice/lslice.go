@@ -4,27 +4,27 @@
 // Create-time: 2023/12/4
 package lslice
 
-func Map[F, T any](s []F, f func(F) T) []T {
+func Map[F, T any](s []F, fc func(F) T) []T {
 	ret := make([]T, 0, len(s))
 	for _, v := range s {
-		ret = append(ret, f(v))
+		ret = append(ret, fc(v))
 	}
 	return ret
 }
 
-func ToMap[F, V any, K comparable](s []F, f func(F) (K, V)) map[K]V {
+func ToMap[F, V any, K comparable](s []F, fc func(F) (K, V)) map[K]V {
 	ret := make(map[K]V, len(s))
 	for _, e := range s {
-		k, v := f(e)
+		k, v := fc(e)
 		ret[k] = v
 	}
 	return ret
 }
 
-func TryMap[F, T any](s []F, f func(F) (T, error)) ([]T, error) {
+func TryMap[F, T any](s []F, fc func(F) (T, error)) ([]T, error) {
 	ret := make([]T, 0, len(s))
 	for _, v := range s {
-		t, e := f(v)
+		t, e := fc(v)
 		if e != nil {
 			return ret, e
 		}
@@ -33,12 +33,24 @@ func TryMap[F, T any](s []F, f func(F) (T, error)) ([]T, error) {
 	return ret, nil
 }
 
-func Filter[F any](s []F, f func(F) bool) []F {
+func Filter[F any](s []F, fc func(F) bool) []F {
 	ret := make([]F, 0, len(s)/2)
 	for _, v := range s {
-		if f(v) {
+		if fc(v) {
 			ret = append(ret, v)
 		}
 	}
 	return ret
+}
+
+func ForEach[T any](s []T, fc func(T)) {
+	for _, v := range s {
+		fc(v)
+	}
+}
+
+func ForEachIdx[T any](s []T, fc func(int, T)) {
+	for i, v := range s {
+		fc(i, v)
+	}
 }
