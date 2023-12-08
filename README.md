@@ -12,4 +12,4 @@ This package was not yet open source at the time of the author's resignation, an
 
 灵感来源：字节跳动 code.byted.org/lang/gg
 
-此包在作者离职时仍未开源，未为找到一个类似的仓库，因此基于 lang/gg 的一些思想做了此包，若后续 lang/gg 计划开源，欢迎联系我，可以转移此仓库的所有权
+此包在作者离职时仍未开源，也未找到一个类似的仓库，因此基于 lang/gg 的一些思想做了此包，若后续 lang/gg 计划开源，欢迎联系我，可以转移此仓库的所有权
