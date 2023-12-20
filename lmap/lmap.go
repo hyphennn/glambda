@@ -14,3 +14,18 @@ func ForEach[K comparable, V any](m map[K]V, fc func(K, V)) {
 		fc(k, v)
 	}
 }
+
+func Reverse[K, V comparable](m map[K]V) map[V]K {
+	ret := make(map[V]K, len(m))
+	for k, v := range m {
+		ret[v] = k
+	}
+	return ret
+}
+
+func SafeStore[K comparable, V any, M ~map[K]V](m M, k K, v V) {
+	if m == nil {
+		m = make(map[K]V)
+	}
+	m[k] = v
+}
