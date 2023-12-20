@@ -61,3 +61,7 @@ type Number interface {
 type Addable interface {
 	Number | Complex | ~string
 }
+
+type UnPtrAble interface {
+	Number | Complex | ~string
+}
