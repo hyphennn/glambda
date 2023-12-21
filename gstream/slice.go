@@ -4,6 +4,10 @@
 // Create-time: 2023/12/11
 package gstream
 
+import (
+	"sort"
+)
+
 type SliceStream[T any] struct {
 	s []T
 }
@@ -21,10 +25,57 @@ func ToMapStream[K comparable, T, V any](s *SliceStream[T], fc func(T) (K, V)) *
 	return AsMapStream(m)
 }
 
-func (s *SliceStream[T]) ForEach(fc func(T)) {
+func ToOtherSliceStream[T1, T2 any](s *SliceStream[T1], fc func(T1) T2) *SliceStream[T2] {
+	s2 := make([]T2, 0, len(s.s))
+	s.ForEach(func(t1 T1) {
+		s2 = append(s2, fc(t1))
+	})
+	return AsSliceStream(s2)
+}
+
+func (s *SliceStream[T]) ForEach(fc func(T)) *SliceStream[T] {
 	for _, v := range s.s {
 		fc(v)
 	}
+	return s
+}
+
+func (s *SliceStream[T]) Filter(fc func(T) bool) *SliceStream[T] {
+	s2 := make([]T, 0, len(s.s)/2)
+	s.ForEach(func(t T) {
+		if fc(t) {
+			s2 = append(s2, t)
+		}
+	})
+	s.s = s2
+	return s
+}
+
+// Convert AKA: Map
+func (s *SliceStream[T]) Convert(fc func(T) T) *SliceStream[T] {
+	s2 := make([]T, 0, len(s.s))
+	s.ForEach(func(t T) {
+		s2 = append(s2, fc(t))
+	})
+	s.s = s2
+	return s
+}
+
+// Map an alias of [Convert]
+func (s *SliceStream[T]) Map(fc func(T) T) *SliceStream[T] {
+	return s.Convert(fc)
+}
+
+func (s *SliceStream[T]) distinct() *SliceStream[T] {
+	// todo
+	panic("need implement")
+}
+
+func (s *SliceStream[T]) Sort(less func(t1, t2 T) bool) *SliceStream[T] {
+	sort.Slice(s.s, func(i, j int) bool {
+		return less(s.s[i], s.s[j])
+	})
+	return s
 }
 
 func (s *SliceStream[T]) Count() int {
