@@ -8,7 +8,7 @@ package disjoint_set
 import (
 	"fmt"
 
-	"github.com/hyphennn/glamda/lutils"
+	"github.com/hyphennn/glamda/gutils"
 )
 
 type DisjointSetWithPC[T comparable] struct {
@@ -34,7 +34,7 @@ func (d *DisjointSetWithPC[T]) Find(value T) (T, error) {
 }
 
 func (d *DisjointSetWithPC[T]) innerFind(value T) T {
-	return lutils.TernaryForm(d.parent[value] != value, func() T {
+	return gutils.TernaryForm(d.parent[value] != value, func() T {
 		d.parent[value] = d.innerFind(d.parent[value])
 		return value
 	}(), d.parent[value])

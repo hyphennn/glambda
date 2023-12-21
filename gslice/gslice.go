@@ -1,8 +1,8 @@
-// Package lslice
+// Package gslice
 // Author: hyphen
 // Copyright 2023 hyphen. All rights reserved.
 // Create-time: 2023/12/4
-package lslice
+package gslice
 
 func Map[F, T any](s []F, fc func(F) T) []T {
 	ret := make([]T, 0, len(s))

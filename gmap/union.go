@@ -1,8 +1,8 @@
-// Package lmap
+// Package gmap
 // Author: hyphen
 // Copyright 2023 hyphen. All rights reserved.
 // Create-time: 2023/12/8
-package lmap
+package gmap
 
 func Union[K comparable, V any](ms ...map[K]V) map[K]V {
 	if len(ms) == 0 {

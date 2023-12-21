@@ -1,8 +1,8 @@
-// Package lset
+// Package gset
 // Author: hyphen
 // Copyright 2023 hyphen. All rights reserved.
 // Create-time: 2023/12/8
-package lset
+package gset
 
 type SliceSet[K comparable, V any] struct {
 	m     map[K]int
