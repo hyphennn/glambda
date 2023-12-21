@@ -45,6 +45,7 @@ func (s *SliceSet[K, V]) Update(key K, value V) bool {
 	s.update(key, value)
 	return true
 }
+
 func (s *SliceSet[K, V]) Upsert(key K, value V) {
 	if _, ok := s.m[key]; ok {
 		s.update(key, value)
