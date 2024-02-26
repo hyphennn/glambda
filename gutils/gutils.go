@@ -11,6 +11,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"strings"
 	"sync"
 
 	"github.com/hyphennn/glamda/internal"
@@ -150,4 +151,14 @@ func access(ctx context.Context, url string, method string, header map[string]st
 		return nil, fmt.Errorf("access %s failed: %w", url, err)
 	}
 	return resp, nil
+}
+
+func URLFmt(pattern string, args ...string) string {
+	if len(args)%2 == 1 {
+		return pattern
+	}
+	for i := 0; i < len(args); i += 2 {
+		pattern = strings.ReplaceAll(pattern, args[i], args[i+1])
+	}
+	return pattern
 }
