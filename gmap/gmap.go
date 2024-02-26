@@ -29,3 +29,11 @@ func SafeStore[K comparable, V any, M ~map[K]V](m M, k K, v V) {
 	}
 	m[k] = v
 }
+
+func ToSlice[K comparable, V, T any](m map[K]V, fc func(K, V) T) []T {
+	ret := make([]T, len(m))
+	for k, v := range m {
+		ret = append(ret, fc(k, v))
+	}
+	return ret
+}
