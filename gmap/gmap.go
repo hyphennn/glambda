@@ -37,3 +37,19 @@ func ToSlice[K comparable, V, T any](m map[K]V, fc func(K, V) T) []T {
 	}
 	return ret
 }
+
+func CollectKey[K comparable, V any](m map[K]V) []K {
+	ret := make([]K, len(m))
+	for k := range m {
+		ret = append(ret, k)
+	}
+	return ret
+}
+
+func CollectValue[K comparable, V any](m map[K]V) []V {
+	ret := make([]V, len(m))
+	for _, v := range m {
+		ret = append(ret, v)
+	}
+	return ret
+}
