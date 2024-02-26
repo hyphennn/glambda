@@ -31,7 +31,7 @@ func SafeStore[K comparable, V any, M ~map[K]V](m M, k K, v V) {
 }
 
 func ToSlice[K comparable, V, T any](m map[K]V, fc func(K, V) T) []T {
-	ret := make([]T, len(m))
+	ret := make([]T, 0, len(m))
 	for k, v := range m {
 		ret = append(ret, fc(k, v))
 	}
@@ -39,7 +39,7 @@ func ToSlice[K comparable, V, T any](m map[K]V, fc func(K, V) T) []T {
 }
 
 func CollectKey[K comparable, V any](m map[K]V) []K {
-	ret := make([]K, len(m))
+	ret := make([]K, 0, len(m))
 	for k := range m {
 		ret = append(ret, k)
 	}
@@ -47,7 +47,7 @@ func CollectKey[K comparable, V any](m map[K]V) []K {
 }
 
 func CollectValue[K comparable, V any](m map[K]V) []V {
-	ret := make([]V, len(m))
+	ret := make([]V, 0, len(m))
 	for _, v := range m {
 		ret = append(ret, v)
 	}
