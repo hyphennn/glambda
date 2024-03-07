@@ -7,7 +7,7 @@ package gstack
 import (
 	"testing"
 
-	"github.com/hyphennn/glamda/internal/assert"
+	"github.com/hyphennn/glambda/internal/assert"
 )
 
 func TestStack(t *testing.T) {

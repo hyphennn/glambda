@@ -16,7 +16,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/hyphennn/glamda/internal/constraints"
+	"github.com/hyphennn/glambda/internal/constraints"
 )
 
 var (

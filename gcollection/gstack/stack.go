@@ -5,7 +5,7 @@
 package gstack
 
 import (
-	"github.com/hyphennn/glamda/internal"
+	"github.com/hyphennn/glambda/internal"
 )
 
 type node[T any] struct {

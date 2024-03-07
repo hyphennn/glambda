@@ -5,8 +5,8 @@
 package gconv
 
 import (
-	"github.com/hyphennn/glamda/internal"
-	"github.com/hyphennn/glamda/internal/constraints"
+	"github.com/hyphennn/glambda/internal"
+	"github.com/hyphennn/glambda/internal/constraints"
 )
 
 func ToPtr[T constraints.UnPtrAble](t T) *T {

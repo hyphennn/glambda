@@ -8,8 +8,8 @@ import (
 	"strconv"
 	"testing"
 
-	"github.com/hyphennn/glamda/gslice"
-	"github.com/hyphennn/glamda/internal/assert"
+	"github.com/hyphennn/glambda/gslice"
+	"github.com/hyphennn/glambda/internal/assert"
 )
 
 func TestMap(t *testing.T) {

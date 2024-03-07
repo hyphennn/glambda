@@ -8,7 +8,7 @@ package disjoint_set
 import (
 	"fmt"
 
-	"github.com/hyphennn/glamda/gutils"
+	"github.com/hyphennn/glambda/gutils"
 )
 
 type DisjointSetWithPC[T comparable] struct {

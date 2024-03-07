@@ -14,7 +14,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/hyphennn/glamda/internal"
+	"github.com/hyphennn/glambda/internal"
 )
 
 func TernaryForm[T any](cond bool, tureVal, falseVal T) T {

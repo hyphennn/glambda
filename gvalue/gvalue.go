@@ -5,8 +5,8 @@
 package gvalue
 
 import (
-	"github.com/hyphennn/glamda/internal"
-	"github.com/hyphennn/glamda/internal/constraints"
+	"github.com/hyphennn/glambda/internal"
+	"github.com/hyphennn/glambda/internal/constraints"
 )
 
 func Sum[T constraints.Addable](s ...T) T {

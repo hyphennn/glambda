@@ -7,8 +7,8 @@ package gconv_test
 import (
 	"testing"
 
-	"github.com/hyphennn/glamda/gconv"
-	"github.com/hyphennn/glamda/internal/assert"
+	"github.com/hyphennn/glambda/gconv"
+	"github.com/hyphennn/glambda/internal/assert"
 )
 
 func TestToPtr(t *testing.T) {
