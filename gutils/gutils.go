@@ -57,6 +57,10 @@ func MustDoCtx[K, V any](ctx context.Context, key K, fc func(context.Context, K)
 	})
 }
 
+func NoError[T any](t T) (T, error) {
+	return t, nil
+}
+
 func MustEasyDo[V any](fc func() (V, error)) V {
 	v, err := fc()
 	if err != nil {

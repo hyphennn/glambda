@@ -67,3 +67,48 @@ func CollectKey[K comparable, V any](m map[K]V) []K {
 func CollectValue[K comparable, V any](m map[K]V) []V {
 	return ToSlice(m, UseValue[K, V])
 }
+
+func ContainsAll[K comparable, V any](m map[K]V, ks ...K) bool {
+	if (m == nil || len(m) == 0) && len(ks) != 0 {
+		return false
+	}
+	for _, k := range ks {
+		if _, ok := m[k]; !ok {
+			return false
+		}
+	}
+	return true
+}
+
+func ContainsAny[K comparable, V any](m map[K]V, ks ...K) bool {
+	if m == nil || len(m) == 0 {
+		return false
+	}
+	for _, k := range ks {
+		if _, ok := m[k]; ok {
+			return true
+		}
+	}
+	return false
+}
+
+func ContainsMapAll[K, V comparable, M ~map[K]V](parent, child M) bool {
+	if len(parent) < len(child) {
+		return false
+	}
+	for k, v := range child {
+		if parent[k] != v {
+			return false
+		}
+	}
+	return true
+}
+
+func ContainsMapAny[K, V comparable, M ~map[K]V](parent, child M) bool {
+	for k, v := range child {
+		if parent[k] == v {
+			return true
+		}
+	}
+	return false
+}

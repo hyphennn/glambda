@@ -6,6 +6,8 @@ package gstream
 
 import (
 	"sort"
+
+	"github.com/hyphennn/glambda/gutils"
 )
 
 type SliceStream[T any] struct {
@@ -14,6 +16,15 @@ type SliceStream[T any] struct {
 
 func AsSliceStream[T any](s []T) *SliceStream[T] {
 	return &SliceStream[T]{s}
+}
+
+func MapAsSliceStream[K comparable, V, T any, M ~map[K]V](m M, fc func(K, V) T) *SliceStream[T] {
+	return ToSliceStream(
+		AsMapStream(m),
+		func(k K, v V) T {
+			return fc(k, v)
+		},
+	)
 }
 
 func ToMapStream[K comparable, T, V any](s *SliceStream[T], fc func(T) (K, V)) *MapStream[K, V] {
@@ -84,4 +95,8 @@ func (s *SliceStream[T]) Count() int {
 
 func (s *SliceStream[T]) Collect() []T {
 	return s.s
+}
+
+func (s *SliceStream[T]) CollectNoError() ([]T, error) {
+	return gutils.NoError(s.Collect())
 }

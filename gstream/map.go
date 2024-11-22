@@ -4,12 +4,22 @@
 // Create-time: 2023/12/11
 package gstream
 
+import (
+	"github.com/hyphennn/glambda/gutils"
+)
+
 type MapStream[K comparable, V any] struct {
 	m map[K]V
 }
 
 func AsMapStream[K comparable, V any, M ~map[K]V](m M) *MapStream[K, V] {
 	return &MapStream[K, V]{m}
+}
+
+func SliceAsMapStream[K comparable, V, T any](s []T, fc func(T) (K, V)) *MapStream[K, V] {
+	return ToMapStream(AsSliceStream(s), func(t T) (K, V) {
+		return fc(t)
+	})
 }
 
 func ToSliceStream[K comparable, T, V any](m *MapStream[K, V], fc func(K, V) T) *SliceStream[T] {
@@ -73,4 +83,8 @@ func (m *MapStream[K, V]) Convert(fc func(K, V) (K, V)) *MapStream[K, V] {
 
 func (m *MapStream[K, V]) Collect() map[K]V {
 	return m.m
+}
+
+func (m *MapStream[K, V]) CollectNoError() (map[K]V, error) {
+	return gutils.NoError(m.Collect())
 }
