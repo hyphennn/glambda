@@ -1,7 +1,7 @@
 Quick Start
 
 ```shell
-go get github.com/hyphennn/glamda@latest
+go get github.com/hyphennn/glambda@latest
 ```
 
 ```go
@@ -10,7 +10,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/hyphennn/glamda/gstream"
+	"github.com/hyphennn/glambda/gstream"
 )
 
 func main() {
