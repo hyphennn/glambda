@@ -1,8 +1,6 @@
-// Package gset
-// Author: hyphen
-// Copyright 2023 hyphen. All rights reserved.
-// Create-time: 2023/12/8
-package gset
+// Package gutils
+// Create-time: 2024/12/24
+package gutils
 
 type SliceSet[K comparable, V any] struct {
 	m     map[K]int

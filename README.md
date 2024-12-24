@@ -1,40 +1,14 @@
-Quick Start
+# Quick Start
 
 ```shell
 go get github.com/hyphennn/glamda@latest
 ```
 
-```go
-package main
-
-import (
-	"fmt"
-
-	"github.com/hyphennn/glamda/gstream"
-)
-
-func main() {
-	s := []int{1, 1, 4, 5, 1, 4, 114514, 0, 0, 0}
-	s2 := gstream.AsSliceStream(s).Filter(func(i int) bool {
-		return i%2 == 0
-	}).Convert(func(i int) int {
-		return i + 1
-	}).Sort(func(t1, t2 int) bool {
-		return t1 < t2
-	}).Collect()
-	fmt.Println(s2) // [1 1 1 5 5 114515]
-}
-```
-
-致力于构建一个 Go Stream API 以及一些常用的泛型、闭包工具，并且不引入任何第三方依赖以及过多的性能消耗
-
-Source of inspiration: Bytedance code.byted.org.lang/gg
-
-This package was not open source when the author resigned, and a similar repository was not found, so this package was
-made based on some ideas from the Java Stream API and lang/gg
-
-致力于构建一个 Go Stream API 以及一些常用的泛型、闭包工具，并且不引入任何第三方依赖以及过多的性能消耗
-
 灵感来源：字节跳动 code.byted.org/lang/gg
 
-此包在作者离职时仍未开源，也未找到一个类似的仓库，因此基于 Java Stream API 以及 lang/gg 的一些思想做了此包
+超简易版本的 lang/gg 包， 用于简化一些常用的泛型、闭包工具，并且不引入任何第三方依赖以及过多的性能消耗
+
+此包在作者离职时仍未开源，也未找到一个类似的仓库，因此基于 lang/gg 的一些思想做了此包，但未使用其 Iter 的做法以及一些 Rust
+化的思想，个人觉得没啥意义。
+
+另：想做一些 Stream API，但调整了很久，还是发现意义不大，因此也没动了，能力有限。
