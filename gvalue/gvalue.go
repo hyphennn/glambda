@@ -5,7 +5,6 @@
 package gvalue
 
 import (
-	"github.com/hyphennn/glambda/internal"
 	"github.com/hyphennn/glambda/internal/constraints"
 )
 
@@ -38,5 +37,13 @@ func Min[T constraints.Ordered](s0 T, s ...T) T {
 }
 
 func Zero[T any]() (t T) {
-	return internal.Zero[T]()
+	return
+}
+
+func SafeAssert[T any](v any) T {
+	v, ok := v.(T)
+	if !ok {
+		return Zero[T]()
+	}
+	return v
 }

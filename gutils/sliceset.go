@@ -1,8 +1,6 @@
-// Package gset
-// Author: hyphen
-// Copyright 2023 hyphen. All rights reserved.
-// Create-time: 2023/12/8
-package gset
+// Package gutils
+// Create-time: 2024/12/24
+package gutils
 
 type SliceSet[K comparable, V any] struct {
 	m     map[K]int
@@ -13,10 +11,12 @@ func NewSliceSet[K comparable, V any]() *SliceSet[K, V] {
 	return &SliceSet[K, V]{map[K]int{}, []V{}}
 }
 
-func NewSliceSetFormSlice[K comparable](s []K) *SliceSet[K, K] {
+func NewSliceSetFormSlice[K comparable](ss ...[]K) *SliceSet[K, K] {
 	ret := &SliceSet[K, K]{map[K]int{}, []K{}}
-	for _, k := range s {
-		ret.Upsert(k, k)
+	for _, s := range ss {
+		for _, k := range s {
+			ret.Upsert(k, k)
+		}
 	}
 	return ret
 }

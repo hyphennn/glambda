@@ -1,3 +1,3 @@
 module github.com/hyphennn/glambda
 
-go 1.21
+go 1.23

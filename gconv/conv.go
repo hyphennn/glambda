@@ -5,17 +5,16 @@
 package gconv
 
 import (
-	"github.com/hyphennn/glambda/internal"
-	"github.com/hyphennn/glambda/internal/constraints"
+	"github.com/hyphennn/glambda/gvalue"
 )
 
-func ToPtr[T constraints.UnPtrAble](t T) *T {
+func ToPtr[T any](t T) *T {
 	return &t
 }
 
-func FromPtr[T constraints.UnPtrAble](t *T) T {
+func FromPtr[T any](t *T) T {
 	if t == nil {
-		return internal.Zero[T]()
+		return gvalue.Zero[T]()
 	}
 	return *t
 }
