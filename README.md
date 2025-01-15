@@ -1,7 +1,7 @@
 # Quick Start
 
 ```shell
-go get github.com/hyphennn/glamda@latest
+go get github.com/hyphennn/glambda@latest
 ```
 
 灵感来源：字节跳动 code.byted.org/lang/gg
