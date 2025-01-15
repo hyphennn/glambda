@@ -41,9 +41,9 @@ func Zero[T any]() (t T) {
 }
 
 func SafeAssert[T any](v any) T {
-	v, ok := v.(T)
+	vv, ok := v.(T)
 	if !ok {
 		return Zero[T]()
 	}
-	return v
+	return vv
 }
