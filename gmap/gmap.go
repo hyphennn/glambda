@@ -112,3 +112,14 @@ func ContainsMapAny[K, V comparable, M ~map[K]V](parent, child M) bool {
 	}
 	return false
 }
+
+func Clone[K comparable, V any, M ~map[K]V](m M) M {
+	if m == nil {
+		return nil
+	}
+	r := make(M, len(m))
+	for k, v := range m {
+		r[k] = v
+	}
+	return r
+}
