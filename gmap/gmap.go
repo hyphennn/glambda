@@ -42,21 +42,21 @@ func ToSlice[K comparable, V, T any](m map[K]V, fc KVTrans[K, V, T]) []T {
 	return ret
 }
 
-type KVTrans[K comparable, V, T any] func(K, V) T
+type KVTrans[K any, V, T any] func(K, V) T
 
 var _ KVTrans[any, any, any] = UseKey[any, any]
 var _ KVTrans[any, any, any] = UseValue[any, any]
 var _ KVTrans[any, any, *gutils.Pair[any, any]] = UsePair[any, any]
 
-func UseKey[K comparable, V any](k K, v V) K {
+func UseKey[K any, V any](k K, v V) K {
 	return k
 }
 
-func UseValue[K comparable, V any](k K, v V) V {
+func UseValue[K any, V any](k K, v V) V {
 	return v
 }
 
-func UsePair[K comparable, V any](k K, v V) *gutils.Pair[K, V] {
+func UsePair[K any, V any](k K, v V) *gutils.Pair[K, V] {
 	return gutils.MakePair(k, v)
 }
 

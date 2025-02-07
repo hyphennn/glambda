@@ -26,3 +26,10 @@ func TestUnion(t *testing.T) {
 		gmap.Union(map[string]string{"1": "1", "4": "4"}, map[string]string{"4": "4", "5": "5"}),
 	)
 }
+
+func TestCollectKey(t *testing.T) {
+	assert.Equal(t,
+		3,
+		len(gmap.CollectKey(map[int]int{1: 1, 2: 2, 3: 3})),
+	)
+}

@@ -59,20 +59,20 @@ func UnionOnConflict[K comparable, V any, M ~map[K]V](ms []M, fc OnConflict[K, V
 	return ret
 }
 
-type OnConflict[K comparable, V any] func(k K, old, new V) V
+type OnConflict[K any, V any] func(k K, old, new V) V
 
 var _ OnConflict[any, any] = UseNew[any, any]
 var _ OnConflict[any, any] = UseOld[any, any]
 var _ OnConflict[any, any] = UseZero[any, any]
 
-func UseNew[K comparable, V any](k K, old, new V) V {
+func UseNew[K any, V any](k K, old, new V) V {
 	return new
 }
 
-func UseOld[K comparable, V any](k K, old, new V) V {
+func UseOld[K any, V any](k K, old, new V) V {
 	return old
 }
 
-func UseZero[K comparable, V any](k K, old, new V) (v V) {
+func UseZero[K any, V any](k K, old, new V) (v V) {
 	return
 }
