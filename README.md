@@ -1,3 +1,8 @@
+# Use bytedance/gg
+lang/gg 已开源，请使用[正版 gg](https://github.com/bytedance/gg)
+
+本仓库仍可能不定期更新，用于作者自己的一些存量私人仓库，但不会处理任何 issue，有任何问题请直接使用 bytedance/gg～
+
 # Quick Start
 
 ```shell
